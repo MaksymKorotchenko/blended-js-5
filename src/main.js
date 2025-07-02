@@ -1,16 +1,18 @@
-/*
-  Створи список справ.
-  На сторінці є два інпути які має вводиться назва і текст задачі.
-  Після натискання на кнопку "Add" завдання додається до списку #task-list.
+import { list } from './js/refs';
+import { loadLocal, saveLocal } from './js/local-storage-api';
+import { deleteBtn, form, themeBtn } from './js/refs';
+import { handleClick, handleSubmit } from './js/tasks';
+import { checkTheme, handleThemeClick, applyTheme } from './js/theme-switcher';
+// Розмітка картки задачі
+// <li class="task-list-item">
+//     <button class="task-list-item-btn">Delete</button>
+//     <h3>Заголовок</h3>
+//     <p>Текст</p>
+// </li>
+checkTheme();
+applyTheme();
+loadLocal();
 
-  У кожної картки має бути кнопка "Delete", щоб можна було
-  прибрати завдання зі списку.
-  Список із завданнями має бути доступним після перезавантаження сторінки.
-
-  Розмітка картки задачі
-  <li class="task-list-item">
-      <button class="task-list-item-btn">Delete</button>
-      <h3>Заголовок</h3>
-      <p>Текст</p>
-  </li>
-*/
+form.addEventListener('submit', handleSubmit);
+list.addEventListener('click', handleClick);
+themeBtn.addEventListener('click', handleThemeClick);
